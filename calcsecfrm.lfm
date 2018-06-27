@@ -1,0 +1,567 @@
+object Frm: TFrm
+  Left = 348
+  Height = 348
+  Top = 290
+  Width = 433
+  HelpType = htKeyword
+  HelpContext = 1
+  HorzScrollBar.Page = 432
+  VertScrollBar.Page = 347
+  ActiveControl = EdtPower
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'Нагрузка на кабель'
+  ClientHeight = 348
+  ClientWidth = 433
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  HelpFile = 'calcsec.hlp'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '1.8.4.0'
+  object LblDigits: TLabel
+    Left = 66
+    Height = 13
+    Top = 288
+    Width = 113
+    Caption = '&знаков после запятой'
+    FocusControl = EdtDigits
+    ParentColor = False
+  end
+  object LblEMail: TLabel
+    Cursor = crHandPoint
+    Left = 280
+    Height = 13
+    Hint = 'Написать письмо на e-mail SuleymanovR@yandex.ru'
+    Top = 308
+    Width = 123
+    Anchors = [akLeft, akBottom]
+    Caption = 'SuleymanovR@yandex.ru'
+    ParentColor = False
+    PopupMenu = PppMn
+    OnClick = LblEMailClick
+    OnMouseDown = LblWebMouseDown
+  end
+  object GrpBxLoad: TGroupBox
+    Left = 8
+    Height = 170
+    Top = 8
+    Width = 209
+    Caption = 'Н&агрузка'
+    ClientHeight = 152
+    ClientWidth = 205
+    TabOrder = 0
+    object LblPower: TLabel
+      Left = 8
+      Height = 13
+      Top = -3
+      Width = 77
+      Caption = 'Мо&щность, кВт'
+      FocusControl = EdtPower
+      Layout = tlBottom
+      ParentColor = False
+    end
+    object LblCurrent: TLabel
+      Left = 8
+      Height = 13
+      Top = 37
+      Width = 75
+      Caption = '&Рабочий &ток, А'
+      FocusControl = EdtCurrent
+      Layout = tlBottom
+      ParentColor = False
+    end
+    object LblVoltage: TLabel
+      Left = 120
+      Height = 13
+      Top = -3
+      Width = 77
+      Caption = 'На&пряжение, В'
+      FocusControl = CmbBxVoltage
+      ParentColor = False
+    end
+    object LblCos: TLabel
+      Left = 128
+      Height = 13
+      Top = 37
+      Width = 17
+      Caption = '&cos'
+      FocusControl = CmbBxPF
+      ParentColor = False
+    end
+    object LblFi: TLabel
+      Left = 149
+      Height = 14
+      Top = 37
+      Width = 4
+      Caption = 'f'
+      FocusControl = CmbBxPF
+      Font.Height = -11
+      Font.Name = 'GreekC'
+      ParentColor = False
+      ParentFont = False
+    end
+    object EdtPower: TEdit
+      Left = 8
+      Height = 21
+      Top = 13
+      Width = 105
+      HelpType = htKeyword
+      HelpKeyword = 'load'
+      OnChange = EdtLoadChange
+      OnEnter = EdtPowerEnter
+      OnKeyPress = EdtKeyPress
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object CmbBxVoltage: TComboBox
+      Left = 120
+      Height = 21
+      Top = 13
+      Width = 81
+      ItemHeight = 13
+      Items.Strings = (
+        '12'
+        '24'
+        '127'
+        '220'
+        '380'
+      )
+      OnChange = CmbBxLoadChange
+      OnKeyPress = EdtKeyPress
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+    end
+    object EdtCurrent: TEdit
+      Left = 8
+      Height = 21
+      Top = 53
+      Width = 105
+      OnChange = EdtLoadChange
+      OnEnter = EdtCurrentEnter
+      OnKeyPress = EdtKeyPress
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+    end
+    object CmbBxPF: TComboBox
+      Left = 120
+      Height = 21
+      Hint = 'Коэффициент мощности'
+      Top = 53
+      Width = 81
+      ItemHeight = 13
+      Items.Strings = (
+        '0,8'
+        '1'
+      )
+      OnChange = CmbBxLoadChange
+      OnKeyPress = EdtKeyPress
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+    end
+    object RdGrpPhaseCount: TRadioGroup
+      Left = 120
+      Height = 67
+      Hint = 'Однофазный или трехфазный ток'
+      Top = 77
+      Width = 81
+      AutoFill = True
+      Caption = 'Число &фаз'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.TopBottomSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 49
+      ClientWidth = 77
+      ItemIndex = 1
+      Items.Strings = (
+        '1 фаз&а'
+        '3 фаз&ы'
+      )
+      OnClick = RdGrpPhaseCountClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 4
+    end
+    object RdGrpCurrentSort: TRadioGroup
+      Left = 8
+      Height = 67
+      Hint = 'Переменный или постоянный ток'
+      Top = 77
+      Width = 105
+      AutoFill = True
+      Caption = 'Ро&д тока'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.TopBottomSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 49
+      ClientWidth = 101
+      Items.Strings = (
+        'посто&янный'
+        'пе&ременный'
+      )
+      OnClick = RdGrpCurrentSortClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+    end
+  end
+  object GrpBxCable: TGroupBox
+    Left = 224
+    Height = 217
+    Top = 8
+    Width = 202
+    Caption = '&Кабель'
+    ClientHeight = 199
+    ClientWidth = 198
+    TabOrder = 1
+    object LblIsolMtrl: TLabel
+      Left = 8
+      Height = 13
+      Top = 38
+      Width = 101
+      Caption = 'Материал &изоляции'
+      FocusControl = CmbBxIsolMaterial
+      ParentColor = False
+    end
+    object LblCable: TLabel
+      Left = 8
+      Height = 13
+      Top = -2
+      Width = 33
+      Caption = '&Марка'
+      FocusControl = CmbBxCable
+      ParentColor = False
+    end
+    object LblSection: TLabel
+      Left = 128
+      Height = 13
+      Top = -2
+      Width = 64
+      Caption = '&Сечение, мм'
+      FocusControl = CmbBxSection
+      ParentColor = False
+    end
+    object LabelMaxCoreTemp: TLabel
+      Left = 24
+      Height = 13
+      Top = 110
+      Width = 78
+      Alignment = taRightJustify
+      Caption = 'Макс. те&мп.,°C:'
+      FocusControl = CmbBxMaxCoreTemp
+      ParentColor = False
+    end
+    object LblSquare: TLabel
+      Left = 193
+      Height = 12
+      Top = -6
+      Width = 5
+      Caption = '2'
+      Font.Height = -9
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LblCableCount: TLabel
+      Left = 8
+      Height = 13
+      Top = 150
+      Width = 96
+      Alignment = taRightJustify
+      Caption = 'Кабеле&й в фидере:'
+      FocusControl = EdtCableCount
+      ParentColor = False
+    end
+    object CmbBxIsolMaterial: TComboBox
+      Left = 8
+      Height = 21
+      Hint = 'Материал изоляции кабеля или провода'
+      Top = 54
+      Width = 185
+      ItemHeight = 13
+      OnChange = CmbBxIsolMaterialChange
+      ParentShowHint = False
+      ShowHint = True
+      Style = csDropDownList
+      TabOrder = 0
+    end
+    object CmbBxCable: TComboBox
+      Left = 8
+      Height = 19
+      Hint = 'Марка кабеля'
+      Top = 14
+      Width = 113
+      HelpType = htKeyword
+      ItemHeight = 13
+      OnChange = CmbBxCableChange
+      ParentShowHint = False
+      ShowHint = True
+      Style = csOwnerDrawFixed
+      TabOrder = 1
+    end
+    object CmbBxSection: TComboBox
+      Left = 128
+      Height = 21
+      Hint = 'Сечение жилы'
+      Top = 14
+      Width = 65
+      ItemHeight = 13
+      OnChange = CmbBxSectionChange
+      OnEnter = CmbBxSectionEnter
+      Style = csDropDownList
+      TabOrder = 2
+    end
+    object ChckBxMtlCover: TCheckBox
+      Left = 8
+      Height = 19
+      Hint = 'Наличие металлической оболочки кабеля'
+      Top = 85
+      Width = 149
+      Caption = 'Металлической &оболочка'
+      OnClick = ChckBxMtlCoverClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+    end
+    object CmbBxMaxCoreTemp: TComboBox
+      Left = 16
+      Height = 21
+      Hint = 'Максимально допустимая температура жилы, °C'
+      Top = 126
+      Width = 89
+      ItemHeight = 13
+      OnChange = CmbBxMaxCoreTempChange
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 4
+    end
+    object RdGrpNumOfCores: TRadioGroup
+      Left = 120
+      Height = 79
+      Hint = 'Количество кабелей в питающем фидере потребителя'
+      Top = 110
+      Width = 73
+      AutoFill = True
+      Caption = 'Число &жил'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.TopBottomSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 61
+      ClientWidth = 69
+      Items.Strings = (
+        '&1'
+        '&2'
+        '&3 или 4'
+      )
+      OnClick = RdGrpSectionClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+    end
+    object EdtCableCount: TEdit
+      Left = 48
+      Height = 21
+      Hint = 'Количество кабелей в питающем фидере потребителя'
+      Top = 166
+      Width = 41
+      OnChange = EdtCableCountChange
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 6
+      Text = '1'
+    end
+    object UpDwnCableCount: TUpDown
+      Left = 89
+      Height = 21
+      Top = 166
+      Width = 16
+      Associate = EdtCableCount
+      Min = 1
+      Position = 1
+      TabOrder = 7
+      Wrap = False
+    end
+  end
+  object GrpBxLaying: TGroupBox
+    Left = 8
+    Height = 97
+    Top = 181
+    Width = 209
+    Caption = '&Условия'
+    ClientHeight = 79
+    ClientWidth = 205
+    TabOrder = 2
+    object LblEnvTemp: TLabel
+      Left = 8
+      Height = 13
+      Top = 0
+      Width = 82
+      Caption = 'Темп. &среды, °C'
+      FocusControl = CmbBxEnvTemp
+      ParentColor = False
+    end
+    object LblLoadRegime: TLabel
+      Left = 8
+      Height = 13
+      Top = 40
+      Width = 84
+      Caption = 'Режим &нагрузки'
+      FocusControl = CmbBxLoadRegime
+      ParentColor = False
+    end
+    object RdGrpHeavyLaying: TRadioGroup
+      Left = 112
+      Height = 57
+      Hint = 'Условия прокладки кабеля (см. справку)'
+      Top = -8
+      Width = 89
+      AutoFill = True
+      Caption = 'Про&кладка'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.TopBottomSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 39
+      ClientWidth = 85
+      Items.Strings = (
+        '&легкая'
+        'тяж&елая'
+      )
+      OnClick = RdGrpSectionClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object CmbBxLoadRegime: TComboBox
+      Left = 6
+      Height = 21
+      Hint = 'Режим нагрузки'
+      Top = 56
+      Width = 193
+      ItemHeight = 13
+      OnChange = CmbBxLoadRegimeChange
+      ParentShowHint = False
+      ShowHint = True
+      Style = csDropDownList
+      TabOrder = 1
+    end
+    object CmbBxEnvTemp: TComboBox
+      Left = 8
+      Height = 21
+      Hint = 'Температура окружающей среды, °C'
+      Top = 16
+      Width = 97
+      ItemHeight = 13
+      OnChange = CmbBxEnvTempChange
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+    end
+  end
+  object EdtDigits: TEdit
+    Left = 8
+    Height = 21
+    Hint = 'Число знаков после запятой'
+    Top = 283
+    Width = 33
+    OnChange = EdtLoadChange
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+    Text = '0'
+  end
+  object UpDwnDigits: TUpDown
+    Left = 41
+    Height = 21
+    Top = 283
+    Width = 16
+    Associate = EdtDigits
+    Max = 5
+    Min = 0
+    Position = 0
+    TabOrder = 6
+    Wrap = False
+  end
+  object RdGrpRegister: TRadioGroup
+    Left = 225
+    Height = 65
+    Hint = 'Правила, по которым рассчитываются нагрузки на кабель'
+    Top = 231
+    Width = 97
+    AutoFill = True
+    Caption = '&Регистр'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.TopBottomSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 47
+    ClientWidth = 93
+    Items.Strings = (
+      'Ре&чной'
+      '&Морской'
+    )
+    OnClick = RdGrpSectionClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+  end
+  object BtnClose: TButton
+    Left = 329
+    Height = 25
+    Hint = 'Закрыть'
+    Top = 272
+    Width = 97
+    BorderSpacing.InnerBorder = 4
+    Cancel = True
+    Caption = '&Закрыть'
+    OnClick = BtnCloseClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+  end
+  object SttsBr: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 325
+    Width = 433
+    Panels = <>
+  end
+  object PppMn: TPopupMenu
+    AutoPopup = False
+    left = 290
+    top = 227
+    object miCopy: TMenuItem
+      Caption = 'Копировать'
+      ShortCut = 16451
+      OnClick = miCopyClick
+    end
+  end
+end
