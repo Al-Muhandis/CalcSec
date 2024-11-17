@@ -7,8 +7,8 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms
-  { add your units here }, CalcSecFrm, CalcObj;
+  Forms, CalcSecFrm
+  ;
 
 {$R CalcSec.res}
 {$R calcsec_icon.rc}

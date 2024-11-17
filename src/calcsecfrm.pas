@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, LResources, Forms, Controls, StdCtrls,
-  ComCtrls, ExtCtrls, Buttons, CalcObj, Menus;
+  ComCtrls, ExtCtrls, CalcObj, Menus;
 
 type
 
@@ -55,31 +55,31 @@ type
     SttsBr: TStatusBar;
     UpDwnCableCount: TUpDown;
     UpDwnDigits: TUpDown;
-    procedure FormCreate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var BAction: TCloseAction);
-    procedure EdtPowerEnter(Sender: TObject);
-    procedure EdtCurrentEnter(Sender: TObject);
-    procedure BtnCloseClick(Sender: TObject);
+    procedure FormCreate({%H-}Sender: TObject);
+    procedure FormClose({%H-}Sender: TObject; var {%H-}BAction: TCloseAction);
+    procedure EdtPowerEnter({%H-}Sender: TObject);
+    procedure EdtCurrentEnter({%H-}Sender: TObject);
+    procedure BtnCloseClick({%H-}Sender: TObject);
     procedure EdtLoadChange(Sender: TObject);
-    procedure LblEMailClick(Sender: TObject);
+    procedure LblEMailClick({%H-}Sender: TObject);
     procedure LblWebMouseDown(Sender: TOBject; Button: TMouseButton;
-      Shift: TShiftState; {%H-}X, {%H-}Y: Integer);
-    procedure miCopyClick(Sender: TObject);
+      {%H-}Shift: TShiftState; {%H-}X, {%H-}Y: Integer);
+    procedure miCopyClick({%H-}Sender: TObject);
     procedure RdGrpSectionClick(Sender: TObject);
     procedure CmbBxLoadChange(Sender: TObject);
-    procedure RdGrpCurrentSortClick(Sender: TObject);
-    procedure RdGrpPhaseCountClick(Sender: TObject);
-    procedure CmbBxSectionEnter(Sender: TObject);
-    procedure CmbBxLoadRegimeChange(Sender: TObject);
-    procedure EdtCableCountChange(Sender: TObject);
-    procedure CmbBxIsolMaterialChange(Sender: TObject);
-    procedure CmbBxCableChange(Sender: TObject);
-    procedure CmbBxEnvTempChange(Sender: TObject);
-    procedure CmbBxMaxCoreTempChange(Sender: TObject);
-    procedure ChckBxMtlCoverClick(Sender: TObject);
-    procedure BtnHelpClick(Sender: TObject);
-    procedure CmbBxSectionChange(Sender: TObject);
-    procedure EdtKeyPress(Sender: TObject; var Key: Char);
+    procedure RdGrpCurrentSortClick({%H-}Sender: TObject);
+    procedure RdGrpPhaseCountClick({%H-}Sender: TObject);
+    procedure CmbBxSectionEnter({%H-}Sender: TObject);
+    procedure CmbBxLoadRegimeChange({%H-}Sender: TObject);
+    procedure EdtCableCountChange({%H-}Sender: TObject);
+    procedure CmbBxIsolMaterialChange({%H-}Sender: TObject);
+    procedure CmbBxCableChange({%H-}Sender: TObject);
+    procedure CmbBxEnvTempChange({%H-}Sender: TObject);
+    procedure CmbBxMaxCoreTempChange({%H-}Sender: TObject);
+    procedure ChckBxMtlCoverClick({%H-}Sender: TObject);
+    //procedure BtnHelpClick({%H-}Sender: TObject);
+    procedure CmbBxSectionChange({%H-}Sender: TObject);
+    procedure EdtKeyPress({%H-}Sender: TObject; var Key: Char);
   private
     CalcObj: TCalcSection;
     procedure UpdateLoadCtrl(Value: TValue);
@@ -103,7 +103,9 @@ var
 
 implementation
 
-uses CalcTypes, EStrConst, ClipBrd, Windows;
+uses
+  CalcTypes, EStrConst, ClipBrd, LCLIntf
+  ;
 
 var
   BufferLabel: TLabel;
@@ -115,7 +117,7 @@ const
     ('Величина тока в Амперах','Фазный ток в Амперах');
   VoltageHints: packed array[TPhaseCount] of string =
     ('Напряжение в Вольтах','Линейное напряжение в Вольтах');
-    
+
 procedure TFrm.FormCreate(Sender: TObject);
 var
   Ctrl: TValue;
@@ -201,8 +203,7 @@ end;
 
 procedure TFrm.LblEMailClick(Sender: TObject);
 begin
-  ShellExecute(Handle, nil, 'mailto:SuleymanovR@yandex.ru', nil, nil,
-    SW_SHOW)
+  OpenURL('mailto:SuleymanovR@yandex.ru');
 end;
 
 procedure TFrm.LblWebMouseDown(Sender: TOBject; Button: TMouseButton;
@@ -428,14 +429,14 @@ procedure TFrm.ChckBxMtlCoverClick(Sender: TObject);
 begin
   UpdateSecPrpty(cvMtlCover)
 end;
-
+{
 procedure TFrm.BtnHelpClick(Sender: TObject);
 var
   Path: String;
 begin
   Path := ExtractFileDir(Application.ExeName) + '\calcsec.hlp';
   ShellExecute(Handle, nil, PChar(Path), nil, nil,  SW_SHOW)
-end;
+end;    }
 
 procedure TFrm.UpdateLoadPrpty(Value: TValue);
 begin
@@ -524,7 +525,7 @@ end;
 procedure TFrm.EdtKeyPress(Sender: TObject; var Key: Char);
 begin
   case Key of
-    ',', '.', '/': Key := DecimalSeparator
+    ',', '.', '/': Key := DefaultFormatSettings.DecimalSeparator;
   end
 end;
 

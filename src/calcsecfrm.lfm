@@ -1,8 +1,8 @@
 object Frm: TFrm
   Left = 348
-  Height = 348
+  Height = 435
   Top = 290
-  Width = 433
+  Width = 541
   HelpType = htKeyword
   HelpContext = 1
   HorzScrollBar.Page = 432
@@ -11,31 +11,32 @@ object Frm: TFrm
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Нагрузка на кабель'
-  ClientHeight = 348
-  ClientWidth = 433
-  Font.Height = -11
+  ClientHeight = 435
+  ClientWidth = 541
+  DesignTimePPI = 120
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   HelpFile = 'calcsec.hlp'
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '3.6.0.0'
   object LblDigits: TLabel
-    Left = 66
-    Height = 13
-    Top = 288
-    Width = 113
+    Left = 82
+    Height = 16
+    Top = 360
+    Width = 146
     Caption = '&знаков после запятой'
     FocusControl = EdtDigits
     ParentColor = False
   end
   object LblEMail: TLabel
     Cursor = crHandPoint
-    Left = 280
-    Height = 13
+    Left = 350
+    Height = 16
     Hint = 'Написать письмо на e-mail SuleymanovR@yandex.ru'
-    Top = 308
-    Width = 123
+    Top = 385
+    Width = 157
     Anchors = [akLeft, akBottom]
     Caption = 'SuleymanovR@yandex.ru'
     ParentColor = False
@@ -44,84 +45,84 @@ object Frm: TFrm
     OnMouseDown = LblWebMouseDown
   end
   object GrpBxLoad: TGroupBox
-    Left = 8
-    Height = 170
-    Top = 8
-    Width = 209
+    Left = 10
+    Height = 212
+    Top = 10
+    Width = 261
     Caption = 'Н&агрузка'
-    ClientHeight = 152
-    ClientWidth = 205
+    ClientHeight = 191
+    ClientWidth = 257
     TabOrder = 0
     object LblPower: TLabel
-      Left = 8
-      Height = 13
-      Top = -3
-      Width = 77
+      Left = 10
+      Height = 16
+      Top = -4
+      Width = 94
       Caption = 'Мо&щность, кВт'
       FocusControl = EdtPower
       Layout = tlBottom
       ParentColor = False
     end
     object LblCurrent: TLabel
-      Left = 8
-      Height = 13
-      Top = 37
-      Width = 75
+      Left = 10
+      Height = 16
+      Top = 46
+      Width = 97
       Caption = '&Рабочий &ток, А'
       FocusControl = EdtCurrent
       Layout = tlBottom
       ParentColor = False
     end
     object LblVoltage: TLabel
-      Left = 120
-      Height = 13
-      Top = -3
-      Width = 77
+      Left = 150
+      Height = 16
+      Top = -4
+      Width = 97
       Caption = 'На&пряжение, В'
       FocusControl = CmbBxVoltage
       ParentColor = False
     end
     object LblCos: TLabel
-      Left = 128
-      Height = 13
-      Top = 37
-      Width = 17
+      Left = 160
+      Height = 16
+      Top = 46
+      Width = 22
       Caption = '&cos'
       FocusControl = CmbBxPF
       ParentColor = False
     end
     object LblFi: TLabel
-      Left = 149
-      Height = 14
-      Top = 37
+      Left = 186
+      Height = 16
+      Top = 46
       Width = 4
       Caption = 'f'
       FocusControl = CmbBxPF
-      Font.Height = -11
+      Font.Height = -14
       Font.Name = 'GreekC'
       ParentColor = False
       ParentFont = False
     end
     object EdtPower: TEdit
-      Left = 8
-      Height = 21
-      Top = 13
-      Width = 105
+      Left = 10
+      Height = 24
+      Top = 16
+      Width = 131
       HelpType = htKeyword
       HelpKeyword = 'load'
-      OnChange = EdtLoadChange
-      OnEnter = EdtPowerEnter
-      OnKeyPress = EdtKeyPress
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
+      OnChange = EdtLoadChange
+      OnEnter = EdtPowerEnter
+      OnKeyPress = EdtKeyPress
     end
     object CmbBxVoltage: TComboBox
-      Left = 120
-      Height = 21
-      Top = 13
-      Width = 81
-      ItemHeight = 13
+      Left = 150
+      Height = 24
+      Top = 16
+      Width = 101
+      ItemHeight = 16
       Items.Strings = (
         '12'
         '24'
@@ -129,47 +130,47 @@ object Frm: TFrm
         '220'
         '380'
       )
-      OnChange = CmbBxLoadChange
-      OnKeyPress = EdtKeyPress
       ParentShowHint = False
       ShowHint = True
       TabOrder = 1
+      OnChange = CmbBxLoadChange
+      OnKeyPress = EdtKeyPress
     end
     object EdtCurrent: TEdit
-      Left = 8
-      Height = 21
-      Top = 53
-      Width = 105
-      OnChange = EdtLoadChange
-      OnEnter = EdtCurrentEnter
-      OnKeyPress = EdtKeyPress
+      Left = 10
+      Height = 24
+      Top = 66
+      Width = 131
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
+      OnChange = EdtLoadChange
+      OnEnter = EdtCurrentEnter
+      OnKeyPress = EdtKeyPress
     end
     object CmbBxPF: TComboBox
-      Left = 120
-      Height = 21
+      Left = 150
+      Height = 24
       Hint = 'Коэффициент мощности'
-      Top = 53
-      Width = 81
-      ItemHeight = 13
+      Top = 66
+      Width = 101
+      ItemHeight = 16
       Items.Strings = (
         '0,8'
         '1'
       )
-      OnChange = CmbBxLoadChange
-      OnKeyPress = EdtKeyPress
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
+      OnChange = CmbBxLoadChange
+      OnKeyPress = EdtKeyPress
     end
     object RdGrpPhaseCount: TRadioGroup
-      Left = 120
-      Height = 67
+      Left = 150
+      Height = 84
       Hint = 'Однофазный или трехфазный ток'
-      Top = 77
-      Width = 81
+      Top = 96
+      Width = 101
       AutoFill = True
       Caption = 'Число &фаз'
       ChildSizing.LeftRightSpacing = 6
@@ -180,8 +181,8 @@ object Frm: TFrm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 49
-      ClientWidth = 77
+      ClientHeight = 63
+      ClientWidth = 97
       ItemIndex = 1
       Items.Strings = (
         '1 фаз&а'
@@ -193,11 +194,11 @@ object Frm: TFrm
       TabOrder = 4
     end
     object RdGrpCurrentSort: TRadioGroup
-      Left = 8
-      Height = 67
+      Left = 10
+      Height = 84
       Hint = 'Переменный или постоянный ток'
-      Top = 77
-      Width = 105
+      Top = 96
+      Width = 131
       AutoFill = True
       Caption = 'Ро&д тока'
       ChildSizing.LeftRightSpacing = 6
@@ -208,8 +209,8 @@ object Frm: TFrm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 49
-      ClientWidth = 101
+      ClientHeight = 63
+      ClientWidth = 127
       Items.Strings = (
         'посто&янный'
         'пе&ременный'
@@ -221,141 +222,141 @@ object Frm: TFrm
     end
   end
   object GrpBxCable: TGroupBox
-    Left = 224
-    Height = 217
-    Top = 8
-    Width = 202
+    Left = 280
+    Height = 271
+    Top = 10
+    Width = 252
     Caption = '&Кабель'
-    ClientHeight = 199
-    ClientWidth = 198
+    ClientHeight = 250
+    ClientWidth = 248
     TabOrder = 1
     object LblIsolMtrl: TLabel
-      Left = 8
-      Height = 13
-      Top = 38
-      Width = 101
+      Left = 10
+      Height = 16
+      Top = 48
+      Width = 132
       Caption = 'Материал &изоляции'
       FocusControl = CmbBxIsolMaterial
       ParentColor = False
     end
     object LblCable: TLabel
-      Left = 8
-      Height = 13
+      Left = 10
+      Height = 16
       Top = -2
-      Width = 33
+      Width = 42
       Caption = '&Марка'
       FocusControl = CmbBxCable
       ParentColor = False
     end
     object LblSection: TLabel
-      Left = 128
-      Height = 13
+      Left = 160
+      Height = 16
       Top = -2
-      Width = 64
+      Width = 81
       Caption = '&Сечение, мм'
       FocusControl = CmbBxSection
       ParentColor = False
     end
     object LabelMaxCoreTemp: TLabel
-      Left = 24
-      Height = 13
-      Top = 110
-      Width = 78
+      Left = 30
+      Height = 16
+      Top = 138
+      Width = 93
       Alignment = taRightJustify
       Caption = 'Макс. те&мп.,°C:'
       FocusControl = CmbBxMaxCoreTemp
       ParentColor = False
     end
     object LblSquare: TLabel
-      Left = 193
-      Height = 12
-      Top = -6
-      Width = 5
+      Left = 241
+      Height = 14
+      Top = -8
+      Width = 6
       Caption = '2'
-      Font.Height = -9
+      Font.Height = -11
       Font.Name = 'Arial'
       ParentColor = False
       ParentFont = False
     end
     object LblCableCount: TLabel
-      Left = 8
-      Height = 13
-      Top = 150
-      Width = 96
+      Left = 10
+      Height = 16
+      Top = 188
+      Width = 124
       Alignment = taRightJustify
       Caption = 'Кабеле&й в фидере:'
       FocusControl = EdtCableCount
       ParentColor = False
     end
     object CmbBxIsolMaterial: TComboBox
-      Left = 8
-      Height = 21
+      Left = 10
+      Height = 24
       Hint = 'Материал изоляции кабеля или провода'
-      Top = 54
-      Width = 185
-      ItemHeight = 13
-      OnChange = CmbBxIsolMaterialChange
+      Top = 68
+      Width = 231
+      ItemHeight = 16
       ParentShowHint = False
       ShowHint = True
       Style = csDropDownList
       TabOrder = 0
+      OnChange = CmbBxIsolMaterialChange
     end
     object CmbBxCable: TComboBox
-      Left = 8
-      Height = 19
+      Left = 10
+      Height = 22
       Hint = 'Марка кабеля'
-      Top = 14
-      Width = 113
+      Top = 18
+      Width = 141
       HelpType = htKeyword
-      ItemHeight = 13
-      OnChange = CmbBxCableChange
+      ItemHeight = 16
       ParentShowHint = False
       ShowHint = True
       Style = csOwnerDrawFixed
       TabOrder = 1
+      OnChange = CmbBxCableChange
     end
     object CmbBxSection: TComboBox
-      Left = 128
-      Height = 21
+      Left = 160
+      Height = 24
       Hint = 'Сечение жилы'
-      Top = 14
-      Width = 65
-      ItemHeight = 13
-      OnChange = CmbBxSectionChange
-      OnEnter = CmbBxSectionEnter
+      Top = 18
+      Width = 81
+      ItemHeight = 16
       Style = csDropDownList
       TabOrder = 2
+      OnChange = CmbBxSectionChange
+      OnEnter = CmbBxSectionEnter
     end
     object ChckBxMtlCover: TCheckBox
-      Left = 8
-      Height = 19
+      Left = 10
+      Height = 20
       Hint = 'Наличие металлической оболочки кабеля'
-      Top = 85
-      Width = 149
+      Top = 106
+      Width = 191
       Caption = 'Металлической &оболочка'
-      OnClick = ChckBxMtlCoverClick
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
+      OnClick = ChckBxMtlCoverClick
     end
     object CmbBxMaxCoreTemp: TComboBox
-      Left = 16
-      Height = 21
+      Left = 20
+      Height = 24
       Hint = 'Максимально допустимая температура жилы, °C'
-      Top = 126
-      Width = 89
-      ItemHeight = 13
-      OnChange = CmbBxMaxCoreTempChange
+      Top = 158
+      Width = 111
+      ItemHeight = 16
       ParentShowHint = False
       ShowHint = True
       TabOrder = 4
+      OnChange = CmbBxMaxCoreTempChange
     end
     object RdGrpNumOfCores: TRadioGroup
-      Left = 120
-      Height = 79
+      Left = 150
+      Height = 99
       Hint = 'Количество кабелей в питающем фидере потребителя'
-      Top = 110
-      Width = 73
+      Top = 138
+      Width = 91
       AutoFill = True
       Caption = 'Число &жил'
       ChildSizing.LeftRightSpacing = 6
@@ -366,8 +367,8 @@ object Frm: TFrm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 61
-      ClientWidth = 69
+      ClientHeight = 78
+      ClientWidth = 87
       Items.Strings = (
         '&1'
         '&2'
@@ -379,62 +380,61 @@ object Frm: TFrm
       TabOrder = 5
     end
     object EdtCableCount: TEdit
-      Left = 48
-      Height = 21
+      Left = 60
+      Height = 24
       Hint = 'Количество кабелей в питающем фидере потребителя'
-      Top = 166
-      Width = 41
-      OnChange = EdtCableCountChange
+      Top = 208
+      Width = 51
       ParentShowHint = False
       ShowHint = True
       TabOrder = 6
       Text = '1'
+      OnChange = EdtCableCountChange
     end
     object UpDwnCableCount: TUpDown
-      Left = 89
-      Height = 21
-      Top = 166
-      Width = 16
+      Left = 111
+      Height = 24
+      Top = 208
+      Width = 20
       Associate = EdtCableCount
       Min = 1
       Position = 1
       TabOrder = 7
-      Wrap = False
     end
   end
   object GrpBxLaying: TGroupBox
-    Left = 8
-    Height = 97
-    Top = 181
-    Width = 209
+    Left = 10
+    Height = 121
+    Top = 226
+    Width = 261
     Caption = '&Условия'
-    ClientHeight = 79
-    ClientWidth = 205
+    ClientHeight = 100
+    ClientWidth = 257
     TabOrder = 2
     object LblEnvTemp: TLabel
-      Left = 8
-      Height = 13
+      Left = 10
+      Height = 16
       Top = 0
-      Width = 82
+      Width = 99
       Caption = 'Темп. &среды, °C'
       FocusControl = CmbBxEnvTemp
       ParentColor = False
     end
     object LblLoadRegime: TLabel
-      Left = 8
-      Height = 13
-      Top = 40
-      Width = 84
+      Left = 10
+      Height = 16
+      Top = 50
+      Width = 107
       Caption = 'Режим &нагрузки'
       FocusControl = CmbBxLoadRegime
       ParentColor = False
     end
     object RdGrpHeavyLaying: TRadioGroup
-      Left = 112
-      Height = 57
+      Left = 140
+      Height = 71
       Hint = 'Условия прокладки кабеля (см. справку)'
-      Top = -8
-      Width = 89
+      Top = -10
+      Width = 111
       AutoFill = True
       Caption = 'Про&кладка'
       ChildSizing.LeftRightSpacing = 6
@@ -445,8 +445,8 @@ object Frm: TFrm
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 39
-      ClientWidth = 85
+      ClientHeight = 50
+      ClientWidth = 107
       Items.Strings = (
         '&легкая'
         'тяж&елая'
@@ -457,61 +457,60 @@ object Frm: TFrm
       TabOrder = 0
     end
     object CmbBxLoadRegime: TComboBox
-      Left = 6
-      Height = 21
+      Left = 8
+      Height = 24
       Hint = 'Режим нагрузки'
-      Top = 56
-      Width = 193
-      ItemHeight = 13
-      OnChange = CmbBxLoadRegimeChange
+      Top = 70
+      Width = 241
+      ItemHeight = 16
       ParentShowHint = False
       ShowHint = True
       Style = csDropDownList
       TabOrder = 1
+      OnChange = CmbBxLoadRegimeChange
     end
     object CmbBxEnvTemp: TComboBox
-      Left = 8
-      Height = 21
+      Left = 10
+      Height = 24
       Hint = 'Температура окружающей среды, °C'
-      Top = 16
-      Width = 97
-      ItemHeight = 13
-      OnChange = CmbBxEnvTempChange
+      Top = 20
+      Width = 121
+      ItemHeight = 16
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
+      OnChange = CmbBxEnvTempChange
     end
   end
   object EdtDigits: TEdit
-    Left = 8
-    Height = 21
+    Left = 10
+    Height = 24
     Hint = 'Число знаков после запятой'
-    Top = 283
-    Width = 33
-    OnChange = EdtLoadChange
+    Top = 354
+    Width = 41
     ParentShowHint = False
     ShowHint = True
     TabOrder = 3
     Text = '0'
+    OnChange = EdtLoadChange
   end
   object UpDwnDigits: TUpDown
-    Left = 41
-    Height = 21
-    Top = 283
-    Width = 16
+    Left = 51
+    Height = 24
+    Top = 354
+    Width = 20
     Associate = EdtDigits
     Max = 5
     Min = 0
     Position = 0
     TabOrder = 6
-    Wrap = False
   end
   object RdGrpRegister: TRadioGroup
-    Left = 225
-    Height = 65
+    Left = 281
+    Height = 81
     Hint = 'Правила, по которым рассчитываются нагрузки на кабель'
-    Top = 231
-    Width = 97
+    Top = 289
+    Width = 121
     AutoFill = True
     Caption = '&Регистр'
     ChildSizing.LeftRightSpacing = 6
@@ -522,8 +521,8 @@ object Frm: TFrm
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 47
-    ClientWidth = 93
+    ClientHeight = 60
+    ClientWidth = 117
     Items.Strings = (
       'Ре&чной'
       '&Морской'
@@ -534,30 +533,30 @@ object Frm: TFrm
     TabOrder = 4
   end
   object BtnClose: TButton
-    Left = 329
-    Height = 25
+    Left = 411
+    Height = 31
     Hint = 'Закрыть'
-    Top = 272
-    Width = 97
-    BorderSpacing.InnerBorder = 4
+    Top = 340
+    Width = 121
+    BorderSpacing.InnerBorder = 5
     Cancel = True
     Caption = '&Закрыть'
-    OnClick = BtnCloseClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 5
+    OnClick = BtnCloseClick
   end
   object SttsBr: TStatusBar
     Left = 0
-    Height = 23
-    Top = 325
-    Width = 433
+    Height = 29
+    Top = 406
+    Width = 541
     Panels = <>
   end
   object PppMn: TPopupMenu
     AutoPopup = False
-    left = 290
-    top = 227
+    Left = 363
+    Top = 284
     object miCopy: TMenuItem
       Caption = 'Копировать'
       ShortCut = 16451

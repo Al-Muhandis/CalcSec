@@ -22,6 +22,9 @@ function ErrorStrings(ErrorIndex: Byte): String;
 
 implementation
 
+uses
+  SysUtils;
+
 function ErrorStrings(ErrorIndex: Byte): String;
 begin
   case ErrorIndex of
@@ -39,7 +42,9 @@ begin
       'Слишком высокая температура окружающей среды';
     csETooBigSection:    Result := 'Максимальное сечение кабеля 240 кв.мм';
     csEInOut:            Result := 'Не возможно прочесть файл "Cable.SDB"';
-    csECableNotFound:    Result := 'Такого кабеля в базе данных нет'
+    csECableNotFound:    Result := 'Такого кабеля в базе данных нет';
+  else
+    Result:=EmptyStr;
   end
 end;
 

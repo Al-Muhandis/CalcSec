@@ -24,7 +24,7 @@ type
   protected
     OnDigitsChange: TOnDigitsChange;
     function NumToStr(const ANum: Real; ADigits: Byte = $FF): String;
-    function StrToNum(const AString: String; var ANum: Real): Byte;
+    function StrToNum(const AString: String; out ANum: Real): Byte;
     procedure DoError(const ErrorIndex: Byte);
   public
     OnError:  TOnError;
@@ -378,7 +378,7 @@ begin
     DoError(AError)
 end;
 
-function TCalc.StrToNum(const AString: String; var ANum: Real): Byte;
+function TCalc.StrToNum(const AString: String; out ANum: Real): Byte;
 begin
   Result := 0;
   try
@@ -751,6 +751,7 @@ end;
 
 function TCalcSection.EnvTempStrings(Index: Byte): String;
 begin
+  Result:=EmptyStr;
   if FMarRegister then
   begin
     if Index <= High(MTable5Columns) then
@@ -769,6 +770,7 @@ end;
 
 function TCalcSection.MaxCoreTempStrings(Index: Byte): String;
 begin
+  Result:=EmptyStr;
   if FMarRegister then
   begin
     if Index <= High(MTable1Columns) then
