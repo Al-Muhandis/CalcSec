@@ -38,8 +38,7 @@ jobs:
         $ErrorActionPreference = 'stop'
         Set-PSDebug -Strict
         New-Variable -Option Constant -Name VAR -Value @{
-          Uri =
-            'https://sourceforge.net/projects/lazarus/files/latest/download'
+          Uri = 'https://is.gd/Yuk8a1'
           OutFile = (New-TemporaryFile).FullName + '.exe'
         }
         Invoke-WebRequest @VAR
