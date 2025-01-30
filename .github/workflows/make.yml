@@ -39,7 +39,7 @@ jobs:
         Set-PSDebug -Strict
         New-Variable -Option Constant -Name VAR -Value @{
           Uri =
-            'https://fossies.org/windows/misc/lazarus-3.6-fpc-3.2.2-win64.exe'
+            'https://sourceforge.net/projects/lazarus/files/latest/download'
           OutFile = (New-TemporaryFile).FullName + '.exe'
         }
         Invoke-WebRequest @VAR
