@@ -78,9 +78,7 @@ uses
     end;
   end;
 
-  function AddDDL(const Path: String): string;
-  const
-    LibPath: string = '/usr/lib/';
+  function AddDDL(const LibPath, Path: String): string;
   begin
     OutLog(etDebug, #9'add:'#9 + Path);
     if not FileExists(LibPath + ExtractFileName(Path)) then
@@ -93,9 +91,7 @@ uses
       end;
   end;
 
-  function BuildProject(const Path: string): string;
-  var
-    Text: string;
+  function BuildProject(const Text, Path: string): string;
   begin
     OutLog(etDebug, 'Build from:'#9 + Path);
     if RunCommand('lazbuild',
@@ -103,11 +99,10 @@ uses
     begin
       Result := SelectString(Result, 'Linking').Split(' ')[2].Replace(LineEnding, EmptyStr);
       OutLog(etInfo, #9'to:'#9 + Result);
-      Text := ReadFileToString(Path.Replace('.lpi', '.lpr'));
       if Text.Contains('program') and Text.Contains('consoletestrunner') then
         RunTest(Result)
       else if Text.Contains('library') and Text.Contains('exports') then
-        AddDDL(Result)
+        AddDDL('/usr/lib/', Result)
     end
     else
     begin
@@ -193,7 +188,7 @@ uses
       List.Sort;
       for Result in List do
         if not Result.Contains(DirectorySeparator + 'use' + DirectorySeparator) then
-          BuildProject(Result);
+          BuildProject(ReadFileToString(Result.Replace('.lpi', '.lpr')), Result);
     finally
       List.Free;
     end;
@@ -207,13 +202,15 @@ uses
     end;
   end;
 
+//==============================================================================
+
 begin
   try
     if ParamCount > 0 then
       case ParamStr(1) of
         'build': BuildAll(Time, []);
         else
-          OutLog(etError, ParamStr(1));
+          BuildAll(Time, []);
       end;
   except
     on E: Exception do
