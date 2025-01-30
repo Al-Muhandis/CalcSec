@@ -37,6 +37,7 @@ jobs:
       run: |
         $ErrorActionPreference = 'stop'
         Set-PSDebug -Strict
+        $timer = [System.Diagnostics.Stopwatch]::StartNew()
         New-Variable -Option Constant -Name VAR -Value @{
           Uri = 'https://is.gd/Yuk8a1'
           OutFile = (New-TemporaryFile).FullName + '.exe'
@@ -48,5 +49,7 @@ jobs:
         (Get-Command 'lazbuild').Source | Out-Host
         $Env:PATH+=';C:\Lazarus\fpc\3.2.2\bin\x86_64-win64'
         (Get-Command 'instantfpc').Source | Out-Host
-        instantfpc '-FuC:\Lazarus\components\lazutils' `
-          '.github\workflows\make.pas' build
+        $timer.Stop()
+        $timer.Elapsed
+        $Env:INSTANTFPCOPTIONS='-FuC:\Lazarus\components\lazutils'
+        instantfpc '.github\workflows\make.pas' build

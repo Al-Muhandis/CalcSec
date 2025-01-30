@@ -203,6 +203,8 @@ uses
   end;
 
 //==============================================================================
+// ENDPOINT
+//==============================================================================
 
 begin
   try
@@ -210,7 +212,7 @@ begin
       case ParamStr(1) of
         'build': BuildAll(Time, []);
         else
-          BuildAll(Time, []);
+          OutLog(etDebug, ParamStr(1));
       end;
   except
     on E: Exception do
